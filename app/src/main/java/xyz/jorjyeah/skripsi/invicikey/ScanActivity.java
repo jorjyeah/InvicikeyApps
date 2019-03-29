@@ -119,7 +119,12 @@ public class ScanActivity extends AppCompatActivity {
                                             finish();
                                         }
                                     case "authentication":
-                                        // if auth,  go to auth
+                                        globals.setToken(false);
+                                        AuthModule.main(reader, getApplicationContext());
+                                        if(!globals.getToken()){
+                                            globals.setToken(true);
+                                            finish();
+                                        }
                                         break;
                                     default :
                                         Toast.makeText(ScanActivity.this, "Invalid format", Toast.LENGTH_SHORT).show();
